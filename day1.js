@@ -1,3 +1,4 @@
+// calculates the value of the inputed text if it is an aritmatic expression
 function calculate(text){
     var pattern=/\d+|\+|\-|\*|\/|\(|\)/g;
     var tokens=text.match(pattern);
@@ -9,14 +10,18 @@ function calculate(text){
             }
         return String(val);
     }
-    catch (err)
-    {
+    catch (err){
 
        return err;   // error message will be printed as the answer
-
     }
-    //return JSON.stringify(tokens);
+   
 }
+
+/*given an array of tokens, returns the next token if it is a number,
+otherwise returns NaN, 
+also handles open parens by retuning evaluated value of the expression w/in parens
+deals with negative signs
+*/
 function read_operand(tokens) {
     var num = tokens[0];
     tokens.shift();
@@ -44,18 +49,18 @@ function read_operand(tokens) {
     
  
     var result=parseInt(num); 
-    if (isNaN(result))
-    {
+    if (isNaN(result)) {
         throw "not a number";
     }
-    else
-    {
+    else{
         return result;
     }
 
 }
 
-
+/* evaluates expression up to a closing parenthesis
+calls upon read_operand 
+*/
 function evaluate (tokens) {
    if (tokens.length===0){
        throw "missing operand";
@@ -91,10 +96,11 @@ function evaluate (tokens) {
             value=value/temp;
         }
         
-          // perform requested operation
    }
    return value;
 }
+
+//sets up visual display for calculator
 function setup_calc(div){
     var input=$('<input></input>',{type: "text", size: 50});
     var output=$('<div></div>');
