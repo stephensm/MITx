@@ -67,6 +67,7 @@
     border-width:1px;
     width:420px;
     
+    
 }
 
 
@@ -74,16 +75,25 @@
     position: relative;
     
 }
-
-
-.calculator input[type="text"]{
-    font-size: 16pt;
-    padding:2pt;
+#row{
     margin:5pt;
     width:405px;
     height:60px;
     border-radius:10px;
     border-width:5pt;
+    background-color:#F0FBC8;
+    position:relative;
+}
+.calculator div[class="output"]{
+    padding-left:5pt;
+    position: absolute;
+    top:30px;
+}
+
+.calculator input[type="text"]{
+    font-size: 16pt;
+    width:405px;
+    height:60px;
     color:black;
     background-color:#F0FBC8;
     text-align: right;

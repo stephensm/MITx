@@ -15,6 +15,10 @@ function setup_calc(div){
         ins="";
         input.val(text);});
     var button6=$('<button class="calcbutton">±</button>');
+    button6.bind("click",function(){
+        text="-"+text;
+        ins="-"+ins;
+        input.val(text);});
     var button7=$('<button class="calcbutton">&divide</button>');
     button7.bind("click",function(){
         text=text+ "\xF7";
@@ -100,14 +104,15 @@ function setup_calc(div){
         output.cc("visitility", "visible");});
     var row6=$('<div id="row6">');
 
-    
+    var row=$('<div id="row">');
+    row.append(input,output);
     row1.append(button1,button2,button3,button4);
     row2.append(button5,button6,button7,button8);
     row3.append(button9,button10,button11,button12);
     row4.append(button13,button14,button15,button16);
     row5.append(button17,button18,button19,button20);
     row6.append(button21,button22);
-    back.append(input,output, row1,row2,row3,row4,row5,row6);
+    back.append(row,row1,row2,row3,row4,row5,row6);
     $(div).append(back);
 }
 $(document).ready(function(){
