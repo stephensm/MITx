@@ -2,8 +2,9 @@
     width: 95px;
     height: 50px;
     border-radius: 10px;
-    border: 2px;
+    border-color: #707070;
     border-bottom: #D1D1D1 2px solid;
+    border: 2px;
     background-color: #d3d3d3;
     -moz-box-shadow: inset -2px 7px 1px #6f6f6f;
     -webkit-box-shadow: inset -2px 7px 1px #6f6f6f;
@@ -12,6 +13,7 @@
     color: #353535;
     padding: 10px;
     margin: 5px;
+    
 }
 
 .zerobut{
@@ -37,6 +39,7 @@
     height: 110px;
     border-radius: 10px;
     border: 2px;
+
     border-bottom: #D1D1D1 2px solid;
     background-color: #d3d3d3;
     -moz-box-shadow: inset -2px 7px 1px #6f6f6f;

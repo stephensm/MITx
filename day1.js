@@ -107,6 +107,7 @@ function setup_calc(div){
     var button=$('<button>Calculate</button>');
     button.bind("click",function(){
         output.text(String(calculate(input.val())));
+        output.cc("visitility", "visible")
         
     });
     $(div).append(input,button,output);
