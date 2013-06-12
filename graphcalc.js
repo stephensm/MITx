@@ -1,28 +1,27 @@
 var graphcalc = (function () {
     var exports = {};  // functions,vars accessible from outside
+    function clear(canvas){
+        var DOMcanvas = canvas[0];
+        var ctx = DOMcanvas.getContext('2d');
+        // x, y, w, h
+    ctx.clearRect(0,0,canvas.width(),canvas.height());
+    }
     function graph(canvas,expression,x1,x2) {
-    
+        clear(canvas);
+        var w=canvas.width();
+        var h=canvas.height();
         var DOMcanvas = canvas[0];    
         var ctx = DOMcanvas.getContext('2d');
         ctx.beginPath();
-        var tree = calculator.parse(expression);
-                
-    	if (typeof(tree)=="string"){   
-    
-            ctx.beginPath();
-            ctx.fillStyle="red";
-            ctx.font="20px Georgia";
-            ctx.textAlign="center";
-            ctx.textBaseline="middle";
-            ctx.fillText(tree,100,100);
-        }
-    	else{
-
-    	    var xtemp=x1;
+        try{
+            var off=20;
+            //calc values to plot
+            var tree = calculator.parse(expression);
+            var xtemp=x1;
             var y1=calculator.evaluate(tree,{e: Math.E, pi: Math.PI, x: x1});
             var ymin=y1;
-            var ymax=ymin;
-    	    var dx=(x2-x1)/400;
+            var ymax=y1;
+    	    var dx=(x2-x1)/(w-2*off);
     	    var points=new Array();
         	while(xtemp<=x2){
                 var y= calculator.evaluate(tree,{e: Math.E, pi: Math.PI, x: xtemp});
@@ -32,23 +31,71 @@ var graphcalc = (function () {
                 points.push(cords);
             	xtemp=xtemp+dx;
             	}
-            var dy=(ymax-ymin)/400;
+            //plot values
+            var dy=(ymax-ymin)/(h-2*off);
             ctx.beginPath();
-            ctx.moveTo(x1-x1,400-(y1-ymin)/dx);
-            ctx.beginPath();
-            for (var i = 1; i < points.length; i++) {
+            //ctx.moveTo(off+x1-x1,(h-off)-(y1-ymin)/dx);
+            for (var i =0 ; i < points.length; i++) {
+                if(i==0)
+                {
+                    ctx.moveTo(off+(xp-x1)/dx,h-off-(yp-ymin)/dy);
+                }
                 var xp=points[i][0];
                 var yp=points[i][1];
-                 ctx.lineTo((xp-x1)/dx,400-(yp-y1)/dy);
+                 ctx.lineTo(off+(xp-x1)/dx,h-off-(yp-ymin)/dy);
             }
             ctx.lineWidth=10;
             ctx.strokeStyle="red";
-            //ctx.lineCap="round";
-            //ctx.lineJoin="round";
+            ctx.lineCap="round";
+            ctx.lineJoin="round";
             ctx.stroke();
             
+            //draw axis
+            ctx.beginPath();
+            var axoff=5;
+            ctx.moveTo(axoff,axoff);
+            ctx.lineTo(axoff,h-axoff);
+            ctx.lineTo(w-axoff,h-axoff);
+            ctx.lineWidth=3;
+            ctx.strokeStyle="black";
+            ctx.stroke();
+            //determing sapcing
+            var xspac=(x2-x1)/5;
+            var yspac=(ymax-ymin)/5;
+            ctx.beginPath();
+            var yspace=(h-2*axoff)/5;
+            var xspace=(w-2*axoff)/5;
+            var power=10;
+            for(var j=0; j<5;j++){
+                ctx.moveTo(axoff,j*yspace+axoff);
+                ctx.lineTo(axoff*2,j*yspace+axoff);
+                var yval=Math.round((ymax-j*yspac)*power)/power;  
+                ctx.fillText(yval,axoff*2,j*yspace+axoff);
+                
+                ctx.moveTo(j*xspace+axoff,h-axoff);
+                ctx.lineTo(j*xspace+axoff ,h-2*axoff);
+                var xval=x1+Math.round(j*xspac*power)/power;
+                ctx.fillText(xval,j*xspace+axoff ,h-2*axoff);
+            }
+            ctx.lineWidth=1;
+            ctx.strokeStyle="black";
+            ctx.lineCap="round";
+            ctx.lineJoin="round";
+            ctx.stroke();
+        }
+        catch(err){
+            ctx.beginPath();
+            ctx.fillStyle="red";
+            ctx.font="20px Georgia";
+            ctx.textAlign="center";
+            ctx.textBaseline="middle";
+            ctx.fillText(err.message,100,100);
+        }
+ 
+ 
             
-    	}
+            
+    	
     }
     
     function setup(div) {
