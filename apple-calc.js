@@ -4,10 +4,10 @@ function setup_calc(div){
     var back=$('<div id="back">');
     var input=$('<input></input>',{type: "text", size: 50});
     var output=$('<div class="output"></div>');
-    var button1=$('<button class="calcbutton">MC</button>');
-    var button2=$('<button class="calcbutton">M+</button>');
-    var button3=$('<button class="calcbutton">M-</button>');
-    var button4=$('<button class="calcbutton">MR</button>');
+    var button1=$('<button class="calcbutton">Cos</button>');
+    var button2=$('<button class="calcbutton">Sin</button>');
+    var button3=$('<button class="calcbutton">Tan</button>');
+    var button4=$('<button class="calcbutton">X</button>');
     var row1=$('<div id=row1>');
     var button5=$('<button class="calcbutton">C</button>');
     button5.bind("click",function(){

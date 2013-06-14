@@ -13,11 +13,29 @@ var graphcalc = (function () {
         var DOMcanvas = canvas[0];    
         var ctx = DOMcanvas.getContext('2d');
         ctx.beginPath();
+        expression=expression.replace(/\xF7/g,"/");
+        expression=expression.replace(/\xD7/g,"*");
+        expression=expression.replace(/\u221A/g,"sqrt");
+        
+        
+        //n=expression.replace(/\xF7/g,"/");
+
         try{
             var off=20;
             //calc values to plot
             var tree = calculator.parse(expression);
             var xtemp=x1;
+            if(isNaN(x1) || isNaN(x2)){
+                var y1=calculator.evaluate(tree,{e: Math.E, pi: Math.PI,});
+                ctx.beginPath();
+                ctx.fillStyle="red";
+                ctx.font="20px Georgia";
+                ctx.textAlign="center";
+                ctx.textBaseline="middle";
+                ctx.fillText(y1,100,100);
+            
+            }
+        else{
             var y1=calculator.evaluate(tree,{e: Math.E, pi: Math.PI, x: x1});
             var ymin=y1;
             var ymax=y1;
@@ -83,6 +101,7 @@ var graphcalc = (function () {
             ctx.lineJoin="round";
             ctx.stroke();
         }
+    }
         catch(err){
             ctx.beginPath();
             ctx.fillStyle="red";
@@ -92,8 +111,7 @@ var graphcalc = (function () {
             ctx.fillText(err.message,100,100);
         }
  
- 
-            
+
             
     	
     }
@@ -101,6 +119,7 @@ var graphcalc = (function () {
     function setup(div) {
 
     	var back=$('<div id="back">'); 
+        var cav=$('<div id="cav">'); 
      	var JQcanvas=$('<canvas id="art" width="400" height="400"></canvas>');
     	var r1=$('<div id="r1">'); 
     	var r2=$('<div id="r2">'); 
@@ -116,8 +135,133 @@ var graphcalc = (function () {
     	var but=$('<button>Plot</button>');
         but.bind("click",function(){graph(JQcanvas, func.val(),parseInt(xminin.val()),parseInt(xmaxin.val()))});
         r3.append(but);
-    	back.append(JQcanvas,r1,r2,r3);
-    	$(div).append(back);
+        cav.append(JQcanvas)
+    	back.append(cav,r1,r2,r3);
+        var text="";
+        var row =$('<div id=row1>');
+        var buttonA=$('<button class="calcbutton">(</button>');
+        buttonA.bind("click",function(){
+            text=func.val()+ "(";
+            func.val(text);});
+        var buttonB=$('<button class="calcbutton">)</button>');
+        buttonB.bind("click",function(){
+            text=text+ ")";
+            func.val(text);});
+        var buttonC=$('<button class="calcbutton">\u221A</button>');
+        buttonC.bind("click",function(){
+            text= func.val()+"\u221A" +" (";
+            func.val(text);});
+        var buttonD=$('<button class="calcbutton">X</button>');
+        buttonD.bind("click",function(){
+            text=func.val()+ "x";
+            func.val(text);});
+        
+        
+        var button1=$('<button class="calcbutton">Cos</button>');
+        button1.bind("click",function(){
+            text=func.val()+ "cos(";
+            func.val(text);});
+        var button2=$('<button class="calcbutton">Sin</button>');
+        button2.bind("click",function(){
+            text=func.val()+ "sin(";
+            func.val(text);});
+        var button3=$('<button class="calcbutton">Tan</button>');
+        button3.bind("click",function(){
+            text=func.val()+ "tan(";
+            func.val(text);});
+        var button4=$('<button class="calcbutton">^</button>');
+        button4.bind("click",function(){
+            text=func.val()+ "^";
+            func.val(text);});
+        
+        var row1=$('<div id=row1>');
+        var button5=$('<button class="calcbutton">C</button>');
+        button5.bind("click",function(){
+            text="";
+            func.val(text);});
+        var button6=$('<button class="calcbutton">\xB1</button>');
+        button6.bind("click",function(){
+            text="-"+func.val();
+            func.val(text);});
+        var button7=$('<button class="calcbutton">&divide</button>');
+        button7.bind("click",function(){
+            text=func.val()+ "\xF7";
+            func.val(text);});
+        var button8=$('<button class="calcbutton">&times</button></div>');
+        button8.bind("click",function(){
+            text=func.val()+"\xD7";
+            func.val(text);});
+        var row2=$('<div id="row2">');
+        var button9=$('<button class="calcbutton">7</button>');
+        button9.bind("click",function(){
+            text=func.val()+"7";
+            func.val(text);});
+        var button10=$('<button class="calcbutton">8</button>');
+        button10.bind("click",function(){
+            text=func.val()+"8";
+            func.val(text);});
+        var button11=$('<button class="calcbutton">9</button>');
+        button11.bind("click",function(){
+            text=func.val()+"9";
+            func.val(text);});
+        var button12=$('<button class="calcbutton">-</button></div>');
+        button12.bind("click",function(){
+            text=func.val()+"-";
+            func.val(text);});
+        var row3=$('<div id="row3">');
+        var button13=$('<button class="calcbutton">4</button>');
+        button13.bind("click",function(){
+            text=func.val()+"4";
+            func.val(text);});
+        var button14=$('<button class="calcbutton">5</button>');
+        button14.bind("click",function(){
+            text=func.val()+"5";
+            func.val(text);});
+        var button15=$('<button class="calcbutton">6</button>');
+        button15.bind("click",function(){
+            text=func.val()+"6";
+            func.val(text);});
+        var button16=$('<button class="calcbutton">+</button></div>');
+        button16.bind("click",function(){
+            text=func.val()+"+";
+            func.val(text);});
+        var row4=$('<div id="row4">');
+        var button17=$('<button class="calcbutton">1</button>');
+        button17.bind("click",function(){
+            text=func.val()+"1";
+            func.val(text);});
+        var button18=$('<button class="calcbutton">2</button>');
+        button18.bind("click",function(){
+            text=func.val()+"2";
+            func.val(text);});
+        var button19=$('<button class="calcbutton">3</button></div>');
+        button19.bind("click",function(){
+            text=func.val()+"3";
+            func.val(text);});
+        var row5=$('<div id="row5">');
+        var button21=$('<button class="zerobut">0</button>');
+        button21.bind("click",function(){
+            text=func.val()+"0";
+            func.val(text);});
+        var button22=$('<button class="calcbutton">.</button></div>');
+        button22.bind("click",function(){
+            text=func.val()+".";
+            func.val(text);});
+        var button20=$('<button class="eqbut">=</button>');
+        button20.bind("click",function(){graph(JQcanvas, func.val(),parseInt(xminin.val()),parseInt(xmaxin.val()))});
+        var row6=$('<div id="row6">');
+    
+        var row=$('<div id="row">');
+        row.append(buttonA,buttonB,buttonC,buttonD);
+        row1.append(button1,button2,button3,button4);
+        row2.append(button5,button6,button7,button8);
+        row3.append(button9,button10,button11,button12);
+        row4.append(button13,button14,button15,button16);
+        row5.append(button17,button18,button19,button20);
+        row6.append(button21,button22);
+        back.append(row,row1,row2,row3,row4,row5,row6);
+        $(div).append(back);
+   
 
 
 
