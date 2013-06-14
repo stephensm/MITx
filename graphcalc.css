@@ -30,43 +30,37 @@ background: linear-gradient(to bottom, #EFEFEF, #AAAAAA);
 
  
     }
-
-.graphcalc input[type="text1"]{
+.graphcalc input{
     font-size: 16pt;
     padding:2pt;
-    margin:5pt;
-    width:350px;
-    height:50px;
+    margin:12pt;
     border-radius:10px;
     border-width:5pt;
+    height:50px;
     color:black;
+}
+.graphcalc input[type="text1"]{
+
+    width:350px;
+    
+
 
 }
 .graphcalc input[type="text2"]{
-    font-size: 16pt;
-    padding:2pt;
-    margin:5pt;
+
     width:100px;
-    height:50px;
-    border-radius:10px;
-    border-width:5pt;
-    color:black;
+  
 
 }
 .graphcalc input[type="text3"]{
     font-size: 16pt;
-    padding:2pt;
-    margin:5pt;
+
     width:100px;
-    height:50px;
-    border-radius:10px;
-    border-width:5pt;
-    color:black;
+ 
+   
 
 }
-.calcbutton {
-    width: 95px;
-    height: 50px;
+.graphcalc button{
     border-radius: 10px;
     border-width: 1px;
     border-color:black;
@@ -81,26 +75,30 @@ background: linear-gradient(to bottom, #EFEFEF, #AAAAAA);
     color: #353535;
     padding: 10px;
     margin: 5px;
+}
+
+.calcbutton {
+    width: 95px;
+    height: 50px;
+
     
+    
+}
+.specialbutton{
+    width: 95px;
+    height: 50px;
+        
+}
+.parenbutton{
+    width: 95px;
+    height: 50px;
+        
 }
 
 .zerobut{
     width: 200px;
     height: 50px;
-    border-radius: 10px;
-    border-width: 1px;
-    border-color:black;
-    border-bottom: #D1D1D1 2px solid;
-    background-color: #d3d3d3;
-    -moz-box-shadow: inset -2px 7px 1px #6f6f6f;
-    -webkit-box-shadow: inset -2px 7px 1px #6f6f6f;
-    -webkit-box-shadow: 2px 8px 8px rgba(255, 255, 255, 0.75);
-    -moz-box-shadow:    2px 8px 8px rgba(255, 255, 255, 0.75);
-    box-shadow: inset 0 -2px 7px 1px #6f6f6f;  
-    font-size: 18pt;
-    color: #353535;
-    padding: 10px;
-    margin: 5px;
+    
 
 }
 .eqbut{
