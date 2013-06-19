@@ -1,3 +1,5 @@
 .chart{border:1px solid gray;}
 .chart rect{fill:#1434FF;stroke:white;}
-.chart text{fill:white;font:10px sans-seriff;}
+.chart text{font:10px sans-seriff;}
+.chart line{stroke:#ccc}
+.chart .bar-label{fill:white}
