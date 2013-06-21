@@ -3,3 +3,33 @@
 .chart text{font:10px sans-seriff;}
 .chart line{stroke:#ccc}
 .chart .bar-label{fill:white}
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    fill: none;
+  
+  shape-rendering: crispEdges;
+}
+.area.above {
+  fill: rgb(252,141,89);
+}
+
+.area.below {
+  fill: rgb(145,207,96);
+}
+
+.line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
