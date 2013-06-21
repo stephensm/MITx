@@ -1,0 +1,127 @@
+.knapsack {
+  width: 800px;
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  height: 450px;
+  background-image: linear-gradient(bottom, rgb(60,153,252) 0%, rgb(6,15,115) 50%);
+background-image: -o-linear-gradient(bottom, rgb(60,153,252) 0%, rgb(6,15,115) 50%);
+background-image: -moz-linear-gradient(bottom, rgb(60,153,252) 0%, rgb(6,15,115) 50%);
+background-image: -webkit-linear-gradient(bottom, rgb(60,153,252) 0%, rgb(6,15,115) 50%);
+background-image: -ms-linear-gradient(bottom, rgb(60,153,252) 0%, rgb(6,15,115) 50%);
+
+background-image: -webkit-gradient(
+    linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(60,153,252)),
+	color-stop(0.5, rgb(6,15,115))
+);
+  z-index: 1000;
+  padding: 0;
+  color:white ;
+}
+.check
+{
+    background-image: -webkit-radial-gradient(center, circle farthest-corner, #FFFFFF 0%, #00A3EF 100%);
+   position:relative;
+    top:10%; 
+    left:46%;
+}
+.toggleButt{
+    position: relative;
+    width: 36px;
+    height: 18px;
+	border: 1px solid white;
+    color:black;
+    background-image: -webkit-radial-gradient(center, circle farthest-corner, #FFFFFF 0%, #00A3EF 100%);
+	/*background-color: #0591E8;*/
+    font-size:12;
+    padding:2px;
+	float: right;
+    top: 353px;
+    z-index: 1;
+}
+
+.hbox{
+	position: relative;
+    display: inline-block;
+	border: 1px solid black ; padding:5px; margin: 5px;
+    height:200px;
+	width:300px;
+	border: 1px solid white;
+	z-index: 1;
+    background-image: url('https://fc04.deviantart.net/fs39/f/2008/324/e/1/dark_wood_floor_by_chubbylesbian.jpg');
+   
+}
+
+.sbox{
+	position: relative;
+    display: inline-block;
+    border: 1px solid black ; padding:5px; margin: 5px;
+    height:200px;
+	width:300px;
+	border: 1px solid white;
+    background-image: url('sack.png');
+    z-index: 1;
+    
+}
+
+.sack{
+    display: inline-block;
+	height:300px;
+	width:400px;
+    position: absolute;
+    left:400px;
+    padding:15px; margin: 5px;
+	z-index: 1;
+}
+
+.house{
+    display: inline-block;
+	height:300px;
+	width:400px;
+    position:absolute;
+    padding:15px; margin: 5px;
+	z-index: 1;
+}
+
+.imgh{
+	position: relative;
+	margin-left: 100px;
+	margin-bottom: 1.2em;
+	z-index: 1;
+}
+
+.imgs{
+	position: relative;
+	margin-left: 120px;
+	z-index: 1;
+}
+
+.wvlab{
+	margin-left: 70px;
+}
+
+.vlab{
+	display: inline-block;
+	margin-left: 50px;
+}
+
+.objectDiv{
+	position: relative;
+	display: inline-block;
+	margin: 5px;
+	width: 90px;
+	height: 90px;
+	z-index: 1;
+}
+
+.warning{
+	position: relative;
+	top:0px;
+	left: 160px;
+	height: 300px;
+	opacity: 80;
+	z-index: 2000;
+}
